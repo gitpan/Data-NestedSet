@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 
 
-our $VERSION=1.00;
+our $VERSION=1.01;
 
 	sub new {
 	    my ($class,$data,$depth_position)= @_;
@@ -116,34 +116,34 @@ Data::NestedSet - calculate left - right values from depth (modified preorder tr
 =head1 SYNOPSIS
 
 
-use Data::NestedSet; 
+    use Data::NestedSet; 
 
 
-##let's pretend that you get that from a spreadsheet...
-my $data = [
-       [1,'MUSIC',0],
-       [2,'M-GUITARS',1],
-       [3,'M-G-GIBSON',2],
-       [4,'M-G-G-SG',3],
-       [5,'M-G-FENDER',2],
-       [6,'M-G-F-TELECASTER',3],
-       [7,'M-PIANOS',1],
-       #go on....
-];
+    ##let's pretend that you get that from a spreadsheet...
+    my $data = [
+           [1,'MUSIC',0],
+           [2,'M-GUITARS',1],
+           [3,'M-G-GIBSON',2],
+           [4,'M-G-G-SG',3],
+           [5,'M-G-FENDER',2],
+           [6,'M-G-F-TELECASTER',3],
+           [7,'M-PIANOS',1],
+           #go on....
+    ];
 
-my $nodes   = new Data::NestedSet($data,2)->create_nodes();
+    my $nodes   = new Data::NestedSet($data,2)->create_nodes();
 
-#now $nodes contains : 
+    #now $nodes contains : 
 
-#[
-#       [1,'MUSIC',0,1,14],
-#       [2,'M-GUITARS',1,2,11],
-#       [3,'M-G-GIBSON',2,3,6],
-#       [4,'M-G-G-SG',3,4,5],
-#       [5,'M-G-FENDER',2,7,10],
-#       [6,'M-G-F-TELECASTER',3,8,9],
-#       [7,'M-PIANOS',1,12,13],
-#];
+    #[
+    #       [1,'MUSIC',0,1,14],
+    #       [2,'M-GUITARS',1,2,11],
+    #       [3,'M-G-GIBSON',2,3,6],
+    #       [4,'M-G-G-SG',3,4,5],
+    #       [5,'M-G-FENDER',2,7,10],
+    #       [6,'M-G-F-TELECASTER',3,8,9],
+    #       [7,'M-PIANOS',1,12,13],
+    #];
 
 
 =head1 DESCRIPTION
@@ -165,19 +165,19 @@ this can become a real nightmare (don't even mention reorganisation of the tree!
 If you want third parts to deal with this system thru an easy-to-go process,
 you may have a hard time explaining the nested model concept:
 
-Basically each rows can be considered the branch or the leaf of a tree where
+C<< Basically each rows can be considered the branch or the leaf of a tree where
 the left and right value of a row represents all the sub categories
 within this category...
 Therefore when the right value minus the left value is equal to 1, 
 you can say that this category does not contain any sub categories,
-you see?
+you see? >>
 ...
 ...
 
 But explaining that categories nest with depth can be easily understood:
 
-The first category is at level 0. The next category within the first category is 
-at level 1 and so on and so forth.
+C<< The first category is at level 0. The next category within the first category is 
+at level 1 and so on and so forth. >>
 
 You should see in the eyes of your listener a glow of understanding.
 
@@ -191,7 +191,9 @@ Even if these advantages are related to the nested set model rather than to this
 it is interesting to notice that:
 
 - You can build an entire tree in a snap.
+
 - You can rebuilt the entire tree structure in a snap too:
+
 
 If you insert for the first time the newly created nested model in your favorite database
 and then needs to change many categories depth, reorder the tree, 
@@ -202,6 +204,7 @@ Use the module to recreate the left and right values and then update or even ins
 the new tree.
 
 - You can change the order of the tree very easily.
+
 How many times did a client come over you asking you to reorder the categories?
 The nested set model allows to order the categories by their left (or right) value.
 You can therefore reorder the categories and reimport them very easily
@@ -265,6 +268,26 @@ You didn't supply a proper depth's offset value within the array reference.
 =back
 
 
+=head1  SEE ALSO
+
+=over 
+
+=item B<explanation of the nested set model>
+
+L<<a href="http://www.perl.org/">http://www.perl.org/</a>>
+
+=item B<other related modules>
+
+L<Table::ParentChild>
+L<Tree::DAG_Node>
+L<Sort::Tree>
+L<DBIx::Tree>
+L<DBIx::Tree::NestedSet>
+
+None of this modules allows you to create a nested model 
+from the depth but are related to some extends.
+
+=back
 
 =head1  CONFIGURATION AND ENVIRONMENT
 
@@ -278,6 +301,8 @@ none
 =head1  INCOMPATIBILITIES
 
 none
+
+
 
 =head1 BUGS AND LIMITATIONS
 

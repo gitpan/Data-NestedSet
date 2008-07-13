@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Data-NestedSet
-version:             1
+version:             1.01
 abstract:            calculate left - right values from depth (modified preorder tree traversal algorithm)
 license:             ~
 author:              
