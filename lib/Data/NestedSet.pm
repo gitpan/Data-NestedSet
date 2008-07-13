@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 
 
-our $VERSION=1.02;
+our $VERSION=1.03;
 
 	sub new {
 	    my ($class,$data,$depth_position)= @_;
@@ -111,7 +111,7 @@ Data::NestedSet - calculate left - right values from depth (modified preorder tr
 
 =head1 VERSION
 
-1.02
+1.03
 
 =head1 SYNOPSIS
 
@@ -274,7 +274,8 @@ You didn't supply a proper depth's offset value within the array reference.
 
 =item B<explanation of the nested set model>
 
-L<<a href="http://dev.mysql.com/tech-resources/articles/hierarchical-data.html">Managing Hierarchical Data in MySQL</a>>
+http://dev.mysql.com/tech-resources/articles/hierarchical-data.html
+(Managing Hierarchical Data in MySQL)
 
 Even though, it is written for mysql rdb, the explanations are worth a look.
 

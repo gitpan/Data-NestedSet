@@ -5,6 +5,4 @@ Makefile.PL
 README
 lib/Data/NestedSet.pm
 t/00-load.t
-t/boilerplate.t
-t/pod-coverage.t
-t/pod.t
+t/nested.t
